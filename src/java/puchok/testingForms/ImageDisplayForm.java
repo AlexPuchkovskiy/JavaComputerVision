@@ -54,16 +54,12 @@ class Panel extends JPanel {
     BufferedImage image;
 
     public Panel(BufferedImage image) {
-        //Creates gray scale image and store it, or just store source image
-        this.image = BufferedImageInformation.convertToGrayScale(image);
-        BufferedImageInformation bufImInf = new BufferedImageInformation(this.image);
+        this.image = image;
 
-        //Gets image pixels intensity
-        AdditionalMethodsForDebugging.print2DimensionalArray(bufImInf.getGrayImageColorIntensity());
-
-        //Gets colors of each pixel on the Image
-        Color[][] colors = bufImInf.getImagePixelsColors();
-        System.out.printf("Color:%n%d\t%d\t%d", colors[0][0].getRed(), colors[0][0].getGreen(), colors[0][0].getBlue());
+        //Test image pixels intensity
+        TestMethods.testImagePixelsIntensity(image);
+        //Test image pixels colors value
+        TestMethods.testImagePixelsColors(image);
     }
 
     public void paintComponent(Graphics g) {
@@ -71,4 +67,32 @@ class Panel extends JPanel {
 
         g2.drawImage(image, null, null);
     }
+}
+
+//static methods for testing different classes
+class TestMethods {
+    //Test image pixels intensity
+    public static boolean testImagePixelsIntensity(BufferedImage image) {
+        //Creates gray scale image and store it
+        image = BufferedImageInformation.convertToGrayScale(image);
+        BufferedImageInformation bufImInf = new BufferedImageInformation(image);
+
+        //Gets image pixels intensity
+        AdditionalMethodsForDebugging.print2DimensionalArray(bufImInf.getGrayImageColorIntensity());
+
+        return true;
+    }
+
+    //Test image pixels colors value
+    public static boolean testImagePixelsColors(BufferedImage image) {
+        //store source image
+        BufferedImageInformation bufImInf = new BufferedImageInformation(image);
+
+        //Gets colors of each pixel on the Image
+        Color[][] colors = bufImInf.getImagePixelsColors();
+        System.out.printf("Color:%n%d\t%d\t%d", colors[0][0].getRed(), colors[0][0].getGreen(), colors[0][0].getBlue());
+
+        return true;
+    }
+
 }
