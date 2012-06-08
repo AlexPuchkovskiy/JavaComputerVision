@@ -1,5 +1,6 @@
 package puchok.testingForms;
 
+import puchok.additional.AdditionalMethodsForDebugging;
 import puchok.imageProcessing.BufferedImageInformation;
 
 import javax.imageio.ImageIO;
@@ -54,11 +55,11 @@ class Panel extends JPanel {
 
     public Panel(BufferedImage image) {
         //Creates gray scale image and store it, or just store source image
-        this.image = image;//BufferedImageInformation.convertToGrayScale(image);
+        this.image = BufferedImageInformation.convertToGrayScale(image);
         BufferedImageInformation bufImInf = new BufferedImageInformation(this.image);
 
         //Gets image pixels intensity
-        //AdditionalMethodsForDebugging.print2DimensionalArray(bufImInf.getGrayImageColorIntensity());
+        AdditionalMethodsForDebugging.print2DimensionalArray(bufImInf.getGrayImageColorIntensity());
 
         //Gets colors of each pixel on the Image
         Color[][] colors = bufImInf.getImagePixelsColors();
