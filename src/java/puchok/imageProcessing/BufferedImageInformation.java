@@ -27,7 +27,7 @@ public class BufferedImageInformation {
         else image = new BufferedImage(0, 0, 0);
     }
 
-    //return pixel color intensity; Image need to be in Gray scale scheme
+    //return pixel's color intensity; Image need to be in Gray scale scheme
     public int[][] getGrayImageColorIntensity() {
         if (image.getType() != BufferedImage.TYPE_BYTE_GRAY)
             return null;
