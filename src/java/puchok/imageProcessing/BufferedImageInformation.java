@@ -17,7 +17,28 @@ public class BufferedImageInformation {
         return op.filter(source, null);
     }
 
-    //Default constructor
+    /*
+    *   Static methods
+    * */
+
+     /*
+    *   Change buffered image color model
+    * */
+    public static BufferedImage changeBufferedImageType(BufferedImage image, int type) {
+        BufferedImage changedImage = new BufferedImage(image.getWidth(), image.getHeight(),
+                type);
+        Graphics2D g2 = changedImage.createGraphics();
+        g2.drawImage(image, null, null);
+        g2.dispose();
+
+        return changedImage;
+    }
+
+    /*
+    *   Class Methods
+    * */
+
+     //Default constructor
     public BufferedImageInformation(BufferedImage img) {
         if (img != null) {
             image = img;

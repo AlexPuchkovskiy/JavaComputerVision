@@ -1,7 +1,9 @@
 package puchok.testingForms;
 
 import puchok.additional.AdditionalMethodsForDebugging;
+import puchok.imageProcessing.Blur.SimpleBlur;
 import puchok.imageProcessing.BufferedImageInformation;
+import sun.java2d.pipe.SpanShapeRenderer;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -57,9 +59,16 @@ class Panel extends JPanel {
         this.image = image;
 
         //Test image pixels intensity
-        TestMethods.testImagePixelsIntensity(image);
+        //TestMethods.testImagePixelsIntensity(image);
+
         //Test image pixels colors value
-        TestMethods.testImagePixelsColors(image);
+        //TestMethods.testImagePixelsColors(image);
+
+        //Test Simple Image Blur
+        //this.image = TestMethods.testSimpleImageBlurring(image);
+
+        //Test Better Simple Image Blur
+        this.image = TestMethods.testBetterSimpleImageBlurring(image);
     }
 
     public void paintComponent(Graphics g) {
@@ -95,4 +104,17 @@ class TestMethods {
         return true;
     }
 
+    //Test simple image blurring
+    public static BufferedImage testSimpleImageBlurring(BufferedImage sourceImage) {
+        SimpleBlur blur = new SimpleBlur();
+
+        return blur.createSimpleBlurredImage(sourceImage, null);
+    }
+
+    //Test better version of simple image blurring
+    public static BufferedImage testBetterSimpleImageBlurring(BufferedImage sourceImage) {
+        SimpleBlur blur = new SimpleBlur();
+
+        return blur.createBetterSimpleBlurredImage(sourceImage, null);
+    }
 }
