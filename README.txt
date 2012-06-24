@@ -1,1 +1,1 @@
-This is computer vision prj, so i'll try to realize some algorithms of computer vision using java language.
+This is computer vision prj, so i'll try to realize some algorithms connected with computer vision using java language.
